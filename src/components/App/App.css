@@ -21,6 +21,12 @@ button {
   font-size: 1.1em;
   border-radius: 4px;
 }
+.bookmark-home {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  font-size: 45px;
+}
 
 @media screen and (min-width: 460px) {
   body,
