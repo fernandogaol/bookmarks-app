@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import AddBookmark from '../../routes/AddBookmark/AddBookmark';
 import EditBookmark from '../../routes/EditBookmark/EditBookmark';
 import BookmarkList from '../../routes/BookmarkList/BookmarkList';
 import BookmarksContext from '../../contexts/BookmarksContext';
 import Nav from '../../components/Nav/Nav';
+import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import config from '../../config';
 import './App.css';
 
@@ -80,9 +81,12 @@ class App extends Component {
         <BookmarksContext.Provider value={contextValue}>
           <Nav />
           <div className="content" aria-live="polite">
-            <Route exact path="/" component={BookmarkList} />
-            <Route path="/add-bookmark" component={AddBookmark} />
-            <Route path="/edit/:bookmarkId" component={EditBookmark} />
+            <Switch>
+              <Route exact path="/" component={BookmarkList} />
+              <Route path="/add-bookmark" component={AddBookmark} />
+              <Route path="/edit/:bookmarkId" component={EditBookmark} />
+              <Route component={NotFoundPage} />
+            </Switch>
           </div>
         </BookmarksContext.Provider>
       </main>
